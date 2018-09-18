@@ -47,10 +47,11 @@ def get_block_info(b):
     
 def get_block(p, b):
     if b >= 0 and b < puzzle_size:
-        start_row = int(b / 3) * 3
-        end_row = start_row + 3
-        start_col = b % 3 * 3
-        end_col = start_col + 3
+        info = get_block_info(b)
+        start_row = info['start_row']
+        end_row =  info['end_row']
+        start_col =  info['start_col']
+        end_col =  info['end_col']
         return [[p[row][col] for col in range(start_col,end_col)] for row in range(start_row, end_row)]
     else:
         raise ValueError('invalid block {0}'.format(b))
