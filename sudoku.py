@@ -30,6 +30,21 @@ def get_column(p, col):
     else:
         raise ValueError('invalid col {0}'.format(col))
 
+def get_block_info(b):
+    if b >= 0 and b < puzzle_size:
+        start_row = int(b / 3) * 3
+        end_row = start_row + 3
+        start_col = b % 3 * 3
+        end_col = start_col + 3
+        return {
+            'start_row' : start_row,
+            'end_row' : end_row,
+            'start_col' : start_col,
+            'end_col' : end_col
+        }
+    else:
+        raise ValueError('invalid block {0}'.format(b))
+    
 def get_block(p, b):
     if b >= 0 and b < puzzle_size:
         start_row = int(b / 3) * 3
